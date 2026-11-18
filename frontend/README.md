@@ -1,16 +1,108 @@
-# React + Vite
+# Javax - Sistema de Gerenciamento de Contatos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web Full-Stack desenvolvida para gerenciamento de contatos, composta por uma API RESTful em Node.js integrada ao banco de dados PostgreSQL e uma interface moderna construída em React com Vite.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Backend
 
-## React Compiler
+- **Node.js** & **Express** (Servidor e rotas da API)
+- **PostgreSQL** (`pg` Pool para conexão com o banco de dados)
+- **CORS** (Integração segura entre frontend e backend)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
 
-## Expanding the ESLint configuration
+- **React** (`App.jsx`, `main.jsx`)
+- **Vite** (Ambiente de desenvolvimento e build)
+- **CSS3** (`app.css`)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📂 Estrutura do Projeto
+
+```text
+javax/
+├── backend/
+│   ├── node_modules/
+│   ├── package.json
+│   └── server.js          # Servidor Express e conexão com PostgreSQL
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── app.css
+│   │   ├── App.jsx        # Componente principal da interface
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
+```
+
+---
+
+## 📋 Pré-requisitos
+
+Antes de rodar o projeto, certifique-se de ter instalado em sua máquina:
+
+- [Node.js](https://nodejs.org) (versão 18 ou superior)
+- [PostgreSQL](https://postgresql.org)
+
+---
+
+## 🔧 Como Instalar e Rodar o Projeto
+
+Como o projeto é dividido em duas partes, você precisará abrir **dois terminais** (um para o backend e outro para o frontend).
+
+### 1. Configurar o Banco de Dados (PostgreSQL)
+
+Crie um banco de dados no PostgreSQL e execute o comando SQL abaixo para criar a tabela `contatos`:
+
+```sql
+CREATE TABLE contatos (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  telefone VARCHAR(20)
+);
+```
+
+_(Ajuste as colunas acima caso sua tabela possua campos diferentes)._
+
+### 2. Iniciar o Backend
+
+No primeiro terminal, entre na pasta `backend`, instale as dependências e inicie o servidor:
+
+```bash
+cd backend
+npm install
+node --watch server.js
+```
+
+_(Certifique-se de que as credenciais do banco no arquivo `server.js` correspondem às do seu PostgreSQL)._
+
+### 3. Iniciar o Frontend
+
+No segundo terminal, entre na pasta `frontend`, instale as dependências e inicie o Vite:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Acesse o link exibido no terminal (geralmente `http://localhost:5173`) para visualizar a aplicação.
+
+---
+
+## 📌 Endpoints da API
+
+- `GET /contatos` - Retorna a lista de todos os contatos cadastrados.
+- `POST /contatos` - Adiciona um novo contato ao banco de dados.
+- `PUT /contatos/:id` - Atualiza os dados de um contato existente.
+- `DELETE /contatos/:id` - Exclui um contato pelo ID.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Bruno Almeida** ([brunohalmeida91](hhttps://github.com/brunohalmeida91/javax)).
